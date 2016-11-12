@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Copyright 2004 The Apache Software Foundation Licensed under the Apache 
+	License, Version 2.0 (the "License"); you may not use this file except in 
+	compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+
+
+
+<web-app>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>Login</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LoginMobile</servlet-name>
+		<servlet-class>LoginMobile</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>_dashboard</servlet-name>
+		<servlet-class>_dashboard</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Dashboard</servlet-name>
+		<servlet-class>Dashboard</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<servlet-class>Main</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Browse</servlet-name>
+		<servlet-class>Browse</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Search</servlet-name>
+		<servlet-class>Search</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SearchMobile</servlet-name>
+		<servlet-class>SearchMobile</servlet-class>
+	</servlet>
+	
+
+	<servlet>
+		<servlet-name>CustomerInfo</servlet-name>
+		<servlet-class>CustomerInfo</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ShoppingCart</servlet-name>
+		<servlet-class>ShoppingCart</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>SingleStar</servlet-name>
+		<servlet-class>SingleStar</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SingleMovie</servlet-name>
+		<servlet-class>SingleMovie</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Signature</servlet-name>
+		<servlet-class>Signature</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Suggestions</servlet-name>
+		<servlet-class>Suggestions</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>MovieDetails</servlet-name>
+		<servlet-class>MovieDetails</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>FTSMobile</servlet-name>
+		<servlet-class>FTSMobile</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoginMobile</servlet-name>
+		<url-pattern>/loginMobile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>_dashboard</servlet-name>
+		<url-pattern>/_dashboard</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Dashboard</servlet-name>
+		<url-pattern>/dashboard</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>Browse</servlet-name>
+		<url-pattern>/browse</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Search</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SearchMobile</servlet-name>
+		<url-pattern>/searchMobile</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>CustomerInfo</servlet-name>
+		<url-pattern>/customerInfo</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShoppingCart</servlet-name>
+		<url-pattern>/shoppingCart</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SingleStar</servlet-name>
+		<url-pattern>/singleStar</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SingleMovie</servlet-name>
+		<url-pattern>/singleMovie</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Signature</servlet-name>
+		<url-pattern>/reports/signature</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Suggestions</servlet-name>
+		<url-pattern>/suggestions</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>MovieDetails</servlet-name>
+		<url-pattern>/movieDetails</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>FTSMobile</servlet-name>
+		<url-pattern>/ftsMobile</url-pattern>
+	</servlet-mapping>
+	
+	<resource-ref>
+	  <description>
+	    Resource reference to a factory for java.sql.Connection
+	    instances that may be used for talking to a particular
+	    database that is configured in the server.xml file.
+	  </description>
+	  <res-ref-name>
+	    jdbc/TestDB
+	  </res-ref-name>
+	  <res-type>
+	    javax.sql.DataSource
+	  </res-type>
+	  <res-auth>
+	    Container
+	  </res-auth>
+	</resource-ref>
+
+<!--  
+	<security-constraint>
+	 <web-resource-collection>
+	    <web-resource-name>HTTPSOnly</web-resource-name>
+	    <url-pattern>/*</url-pattern>
+	 </web-resource-collection>
+	 <user-data-constraint>
+	    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+	 </user-data-constraint>
+	</security-constraint> -->
+
+</web-app>

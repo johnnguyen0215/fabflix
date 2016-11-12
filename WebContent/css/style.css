@@ -1,0 +1,381 @@
+body {
+	background: url("../img/bg/blur.jpg");
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#searchInput{
+	width: 300px;
+}
+
+#searchDropDown{
+	z-index: 1000;
+	border-radius: 2px;
+	position: absolute;
+	background: white;
+	max-width:300px;
+	display: none;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+#suggestions{
+	position:relative;
+	list-style-type:none;
+	margin-right: 45px;
+}
+
+#suggestions li:hover{
+	cursor: pointer;
+	background: #2980b9;
+	color: white;
+}
+
+.moviePopUp{
+	background-color: #2c3e50;
+	min-width: 500px;
+	max-width: 700px;
+	min-height: 200px;
+	max-height: 300px;
+	/*margin-left:100px;*/
+	display:none;
+	position: absolute;
+	margin-top: -100px;
+	color:white;
+	z-index: 1000;
+}
+
+.moviePopUp label{
+	color:white;
+}
+
+.moviePopUp a{
+	color: white;
+}
+
+.moviePanel {
+	padding: 20px;
+	background-color: #ecf0f1;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	clear:both;
+}
+
+.moviePopUp .col-sm-8{
+	margin-top: 30px;
+}
+
+.moviePopUp img{
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+.fa-info-circle{
+	float:left;
+}
+
+.moviePanel .col-sm-4 div:first-child {
+	margin-bottom: 20px;
+}
+
+.moviePanel label {
+	font-weight: bold;
+}
+
+.moviePanel button {
+	margin-top: 50px;
+}
+
+.movieTitle{
+	color:#FFF;
+}
+
+.form-group {
+	text-align: center;
+	width: 300px;
+}
+
+.dropdown ul {
+	list-style: none;
+}
+
+.nav .dropdown-menu {
+	background-color: #222;
+	border-radius: 20px;
+}
+
+.nav .fa-shopping-cart{
+	margin-right: 10px;
+}
+
+.resultsPerPage{
+	color:white;
+}
+
+#shoppingCartWindow *{
+	color:white;
+}
+
+#shoppingCartWindow}
+
+#confirmationPage h1{
+	margin-top:300px;
+}
+
+#confirmationPage a{
+	color: #FFF;
+}
+
+
+#confirmationPage a:hover{
+	color: #1abc9c; 
+}
+
+#shoppingCart .fa-credit-card, #shoppingCart .fa-trash{
+	margin-right:10px;
+}
+
+#shoppingCart th{
+	color:#FFF;
+}
+
+#orderDropdown{
+	margin-bottom:50px;
+}
+
+#sortingList a{
+	text-decoration:none;
+	color:#FFF;
+}
+
+#sortingList a:hover{
+	color:#1abc9c;
+}
+
+#sortingList ul{
+	list-style: none;
+	text-align:center;
+}
+
+
+#sortLabel{
+	margin-right:100px;
+	color:white;
+}
+
+#browsePage ul,#searchPage ul {
+	list-style: none;
+}
+
+.pageHeading {
+	font-weight: bold;
+	color: white;
+}
+
+
+#genreDropdown a {
+	padding: 10px;
+	color: #FFF;
+}
+
+#titleDropdown,#titleDropdown a {
+	color: #FFF;
+}
+
+#titleDropdown li {
+	display: inline;
+}
+
+#titleDropdown ul {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#loginForm h1:first-child {
+	margin-top: 100px;
+}
+
+#loginForm h1 {
+	color: white;
+	font-family: "Raleway";
+	margin-bottom: 50px;
+}
+
+#loginForm label {
+	color: white;
+	font-family: 'Lato';
+}
+
+#loginForm h1 {
+	color: white;
+}
+
+.ghost-button-full-color {
+	font-family: 'Lato', sans-serif;
+	display: inline-block;
+	width: 100px;
+	padding: 5px;
+	color: #fff;
+	background-color: transparent;
+	border: 2px solid #fff;
+	text-align: center;
+	outline: none;
+	text-decoration: none !important;
+	transition: color 0.2s ease-out, background-color 0.2s ease-out,
+		border-color 0.2s ease-out;
+}
+
+.ghost-button-full-color:hover,.ghost-button-full-color:active {
+	cursor: pointer;
+	background-color: #1abc9c;
+	border-color: #1abc9c;
+	color: #fff;
+	transition: color 0.2s ease-in, background-color 0.2s ease-in,
+		border-color 0.2s ease-in;
+}
+
+#cInfoForm {
+	text-align: center;
+	color: white;
+}
+
+#cInfoForm span {
+	color: white;
+	font-family: sans-serif;
+}
+
+#cInfoForm div {
+	margin-bottom: 10px;
+}
+
+#cInfoTitle {
+	text-align: center;
+	color: white;
+}
+
+#browse {
+	float: left;
+	width: 360px;
+}
+
+#genres {
+	background-color: #222; /*#F5F5F4*/
+	float: left;
+	width: 320px;
+	height: 400px;
+	border-radius: 25px;
+	padding: 20px;
+	color: white;
+	margin-left: 20px;
+}
+
+#genreTable {
+	color: white;
+}
+
+#searchTitle {
+	background-color: #222; /*#F5F5F4*/
+	float: left;
+	width: 320px;
+	height: 350px;
+	border-radius: 25px;
+	padding: 20px;
+	color: white;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+#titleTable {
+	color: white;
+}
+
+.mainLink {
+	color: white;
+}
+
+.mainLink:hover {
+	color: #9d9d9d;
+}
+
+#popularMovies {
+	float: left;
+	width: 1200px;
+	height: 850px;
+	border-style: solid;
+	border-color: white;
+	border-radius: 25px;
+	min-width: 500px;
+}
+
+#loginBox h1, #loginBox h4{
+	color: #FFF;
+}
+
+#loginBox,#cInfoBox {
+	width: 500px;
+	height: 600px;
+	border-style: solid;
+	border-color: white;
+	border-radius: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+
+#addStarBox{
+	width: 500px;
+	height: 600px;
+	border-style: solid;
+	border-color: white;
+	border-radius: 25px;
+	margin-left: 100px;
+	margin-top: 100px;
+	color: white;
+	float: left;
+}
+
+#addMovieBox {
+	width: 1000px;
+	height: 600px;
+	border-style: solid;
+	border-color: white;
+	border-radius: 25px;
+	margin-left: 100px;
+	margin-top: 100px;
+	float: left;
+}
+
+#addMovieBox h1, #addMovieBox h2, #addMovieBox h4{
+	color:white;
+}
+
+#metadata {
+	margin-top:50px;
+	padding:10px;
+	height: 500px;
+	color: white;
+	border: solid 3px white;
+	overflow-y: scroll;
+}
+
+#mainPage {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#dashboard h1, #dashboard label{
+	color:white;
+}
+
+.dashboardForm{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.resetSubmit {
+	margin-top: 50px;
+	margin-bottom:10px;
+}
+

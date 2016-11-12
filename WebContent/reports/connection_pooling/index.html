@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">
+<span id="docs-internal-guid-6029a0c3-9ebf-0edd-70ec-ff6bf0244211">
+<span style="font-size: 14.6667px; font-family: Arial; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">
+Connection Pooling is a cache of connections such that a connection can be reused for future requests. 
+<p>Connection Pooling is a cache of connections such that a connection can be reused for future requests. We used connection pooling by creating connections that can be served on demand. These connections are set to be idle and once a connection is in use, that connection becomes &ldquo;active&rdquo;. Closing a connection puts that active connection back in the pool and sets the connection to be &ldquo;Idle&rdquo; again. We use connection pooling in order to save time and processing that comes with creating a new connection.</p>
+
+<p>Connection Pooling was used in any java files that needed to query the database: Browse.java, CustomerInfo.java, LikePredicate.java, Login.java, Search.java, ShoppingCart.java, SingleMovie.java, SingleStar.java</p>
+
+<p>Generally what we did:&nbsp;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Context initCtx = new InitialContext();</p>
+
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Context envCtx = (Context) initCtx.lookup(&quot;java:comp/env&quot;);<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (envCtx == null)<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;out.println(&quot;envCtx is NULL&quot;);</p>
+
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// Look up our data source<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;DataSource ds = (DataSource) envCtx.lookup(&quot;jdbc/TestDB&quot;);</p>
+
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (ds == null)<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;out.println(&quot;ds is null.&quot;);</p>
+
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Connection dbcon = ds.getConnection();</p>
+
+<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (dbcon == null)<br />
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;out.println(&quot;dbcon is null.&quot;);</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /// other queries and statements and code</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;dbcon.close();</p>
+
+<p>We used TomcatPool.war as a reference and &nbsp;added this to the web.xml:&nbsp;</p>
+
+<p>&lt;resource-ref&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;description&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Resource reference to a factory for java.sql.Connection<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;instances that may be used for talking to a particular<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;database that is configured in the server.xml file.<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;/description&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;res-ref-name&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;jdbc/TestDB<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;/res-ref-name&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;res-type&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;javax.sql.DataSource<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;/res-type&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;res-auth&gt;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Container<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&lt;/res-auth&gt;<br />
+&nbsp;&nbsp; &nbsp;&lt;/resource-ref&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</span></span></p>
+
+<div>&nbsp;</div>
+
+<div>&nbsp;</div>
+
+<body>
+
+</body>
+</html>

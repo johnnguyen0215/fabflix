@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Like Predicate Page</title>
+</head>
+<body>
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 14.6667px; font-family: Arial; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Wild Cards </span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">Search: </span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">- We used the like predicate for the search criteria for Title, Director Name, Star First Name and Star Last Name. </span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">- Movie Title: &quot; And movies.title like&#39;%&quot; + Jtitle + &quot;%&#39;&quot;;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">- Director Name: &quot; And movies.director like &#39;%&quot; + Jdirector + &quot;%&#39;&quot;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">- Star First Name: &quot; And stars.first_name like &#39;%&quot; + Jf_n + &quot;%&#39;&quot;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">- Star Last Name: &quot; And stars.last_name like &#39;%&quot; + Jl_n + &quot;%&#39;&quot;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">- Using the like predicate allows for users to enter partial substrings to find movies. For example, if a user enters &ldquo;Charlie and&rdquo; the resulting movie &ldquo;Charlie and the Chocolate Factory&rdquo; would be populated even though the user did not enter the exact full title of the movie. </span></span></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">We used wildcards to implement both the Search and Browse functionalities. On the search page, a user can search by title, year, director, and star first/last name. Since we made the year field a drop down, wild card queries were only used for title, director, and star first and last name. </span><br class="kix-line-break" />
+<span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">More specifically, here was our query:</span></span></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">if(cTitle || cYear || cDirector || cF_n || cL_n){</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot;Where id = Any (Select stars_in_movies.movie_id &quot;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">+ &quot;From movies, stars, stars_in_movies Where stars.id = stars_in_movies.star_id&quot;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">+ &quot; And movies.id = stars_in_movies.movie_id &quot;; &nbsp;</span></span></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">if(cTitle)</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot; And movies.title like&#39;%&quot; + Jtitle + &quot;%&#39;&quot;;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;text-indent: 36pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">if(cYear)</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot; And movies.year =&quot; + Jyear;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">if(cDirector)</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot; And movies.director like &#39;%&quot; + Jdirector + &quot;%&#39;&quot;;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">if(cF_n)</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot; And stars.first_name like &#39;%&quot; + Jf_n + &quot;%&#39;&quot;;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">if(cL_n)</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot; And stars.last_name like &#39;%&quot; + Jl_n + &quot;%&#39;&quot;;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query += &quot;) &quot; + &quot;ORDER BY &quot; + orderQuery + &quot; LIMIT &quot; + resultsPerPage + &quot; OFFSET &quot; + offset;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">&nbsp;&nbsp; &nbsp;</span><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">}</span></span></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">Since it is not mandatory for a user to fill in all the fields before searching, each field had to be checked before that portion of the query was included.</span></span></p>
+
+<p><br />
+&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">We also used wildcards in the Browse feature to browse by title. A user chooses a number or letter by which to browse, and our query searches for any title that starts with that number or letter.</span></span></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">Here was our query for browsing by title:</span></span></p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">query = &quot;Select * from movies where movies.title LIKE &#39;&quot; + browseTitle + &quot;%&#39; &quot; + &quot;ORDER BY &quot; + orderQuery + &quot; LIMIT &quot; + resultsPerPage + &quot; OFFSET &quot; + offset;</span></span></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span id="docs-internal-guid-dc037e00-9b2a-5a73-2a3f-879ae6a09dc3"><span style="font-size: 13.3333px; font-family: Verdana; color: rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap;">Browsing by genre did not need the use of wildcards because genre choices are preset as their full names.</span></span></p>
+
+<p>&nbsp;</p>
+
+
+</body>
+</html>

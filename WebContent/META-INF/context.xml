@@ -1,0 +1,13 @@
+<Context path="/fabflix">
+  
+ <Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               maxAge="180000" 
+               testOnBorrow="true" 
+	      	   testWhileIdle="true"
+	       	   validationInterval="0"
+               validationQuery="Select 1" 
+               username="movieuser" password="password" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/moviedb?autoReconnect=true" />
+
+</Context>
